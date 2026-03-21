@@ -82,13 +82,17 @@ object SettingsRepository {
             val updatedItem = item.copy(value = newValue)
             tableCache[item.table]?.put(item.key, updatedItem)
             
-            // Update the state flow too
+            // Update the state flow too with a NEW list instance to ensure StateFlow triggers
             val currentList = tableStateFlows[item.table]!!.value.toMutableList()
             val index = currentList.indexOfFirst { it.key == item.key }
             if (index != -1) {
                 currentList[index] = updatedItem
-                tableStateFlows[item.table]!!.value = currentList
+            } else {
+                currentList.add(updatedItem)
+                currentList.sortBy { it.key }
             }
+            // Assigning a new list instance to .value will notify collectors
+            tableStateFlows[item.table]!!.value = currentList.toList() 
         }
         success
     }

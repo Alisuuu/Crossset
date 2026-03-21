@@ -11,6 +11,6 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/action_history"
-        android:title="Alterações"
+        android:title="@string/title_history"
         app:showAsAction="never" />
 </menu>

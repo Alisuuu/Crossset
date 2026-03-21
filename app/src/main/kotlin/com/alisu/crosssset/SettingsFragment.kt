@@ -88,7 +88,15 @@ class SettingsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        loadSettings()
+        // When returning to the fragment, ensure we have the latest data from repository flow
+        if (hasLoaded) {
+            lifecycleScope.launch {
+                val currentSettings = SettingsRepository.search("", table) // This returns the current table list
+                updateUI(currentSettings)
+            }
+        } else {
+            loadSettings()
+        }
     }
 
     fun loadSettings(force: Boolean = false) {

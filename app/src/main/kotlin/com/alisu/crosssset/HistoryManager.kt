@@ -55,6 +55,14 @@ object HistoryManager {
         getPrefs(context).edit().remove(HISTORY_KEY).apply()
     }
 
+    fun removeChange(context: Context, item: HistoryItem) {
+        val history = getHistory(context).toMutableList()
+        val removed = history.removeIf { it.timestamp == item.timestamp }
+        if (removed) {
+            saveHistory(context, history)
+        }
+    }
+
     private fun saveHistory(context: Context, list: List<HistoryItem>) {
         val array = JSONArray()
         list.take(100).forEach { item -> // Limit to last 100 changes for performance

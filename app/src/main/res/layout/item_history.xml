@@ -25,6 +25,8 @@
                 android:id="@+id/historyKey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/btnUndo"
+                android:layout_marginEnd="8dp"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
                 android:textColor="@color/white"
                 android:textStyle="bold"

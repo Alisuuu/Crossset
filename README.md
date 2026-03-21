@@ -1,13 +1,8 @@
 # 🛠️ CrossSset
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/558cac8d-5670-40ee-85d3-4e48661cfd82" width="45%" />
-  <img src="https://github.com/user-attachments/assets/0a94299a-d8d4-4299-a9fc-1d3317a2f9d5" width="45%" />
-</p>
+**CrossSset** é a alternativa moderna, poderosa e elegante ao famoso *SetEdit*. Escrito do zero em **Kotlin**, ele é um explorador e gerenciador avançado de configurações do Android (System, Secure e Global), focado em performance extrema e integração nativa com o **Shizuku**.
 
-**CrossSset** is a modern, powerful, and elegant alternative to the well-known *SetEdit*. Built from scratch in **Kotlin**, it is an advanced Android settings explorer and manager (System, Secure, and Global), focused on extreme performance and native integration with **Shizuku**.
-
-> 💡 **Why CrossSset?** Unlike the original SetEdit, CrossSset uses a modern asynchronous architecture (Coroutines), does not freeze with large lists, and introduces the exclusive **Watchdog** feature to lock values in real time.
+> 💡 **Por que o CrossSset?** Diferente do SetEdit original, o CrossSset utiliza arquitetura assíncrona moderna (Coroutines), não trava com listas gigantes e oferece o exclusivo recurso **Watchdog** para travar valores em tempo real.
 
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Kotlin](https://img.shields.io/badge/language-Kotlin-purple.svg)
@@ -16,53 +11,63 @@
 
 ---
 
-## 🔥 Evolution compared to SetEdit
+## 🔥 Evolução em relação ao SetEdit
 
-| Feature | SetEdit (Original) | CrossSset (Modern) |
+| Recurso | SetEdit (Original) | CrossSset (Moderno) |
 | :--- | :---: | :---: |
-| **Language** | Java (Legacy) | **Kotlin (Modern)** |
-| **Interface** | Android 4.0 Style | **Material 3 / AMOLED** |
-| **Performance** | Slow on large lists | **Lazy Loading (Instant)** |
-| **Protection** | None | **Watchdog (Real-time Lock)** |
-| **Search** | Basic | **Instant with Cache** |
-| **Stability** | Prone to ANRs | **Zero ANR (Multi-threaded)** |
+| **Linguagem** | Java (Legacy) | **Kotlin (Moderno)** |
+| **Interface** | Android 4.0 Style | **Material 3 / Amoled** |
+| **Performance** | Lento em listas longas | **Lazy Loading (Instantâneo)** |
+| **Permissões** | ADB Manual (cada tabela) | **Shizuku (Um toque)** |
+| **Proteção** | Nenhuma | **Watchdog (Bloqueio Real-time)** |
+| **Busca** | Básica | **Instantânea com Cache** |
+| **Estabilidade** | Sofre com ANRs | **Zero ANR (Multi-threaded)** |
 
 ---
 
-## ✨ Main Features
+## ✨ Recursos Principais
 
-### 🛡️ Watchdog (The Guardian)
-- The missing feature from SetEdit: monitor specific settings and, if the system or another app tries to change them, Watchdog instantly forces them back to your custom value.
+### 🚀 Performance Nível Profissional
+- **Arquitetura Assíncrona:** Uso intensivo de Kotlin Coroutines e Flows. Nenhuma operação pesada ocorre na thread de interface.
+- **Carregamento sob Demanda (Lazy Loading):** Gerencie milhares de chaves sem lag ou travamentos.
+- **Cache Inteligente:** Resultados de busca instantâneos utilizando cache em memória.
 
-### 📦 Complete Management
-- **Smart Tabs:** Intuitive organization between `System`, `Secure`, and `Global` tables.
-- **History & Undo:** Track all changes with quick undo support.
-- **Backup & Restore:** Export your optimizations as ZIP files and restore them on any device.
+### 🛡️ Watchdog (O Guardião)
+- O recurso que faltava no SetEdit: monitore configurações específicas e, se o sistema ou outro app tentar alterá-las, o Watchdog as força de volta ao seu valor customizado imediatamente.
 
-### 🎨 Design
-- **Material 3:** Modern components, smooth animations, and color-based risk indicators.
+### 📦 Gerenciamento Completo
+- **Abas Inteligentes:** Organização intuitiva entre as tabelas `System`, `Secure` e `Global`.
+- **Histórico & Undo:** Registro de todas as alterações com opção de reversão rápida (Undo).
+- **Backup & Restore:** Exporte suas otimizações em arquivos ZIP e restaure em qualquer dispositivo.
+
+### 🎨 Design Premium
+- **Amoled Deep Black:** Totalmente otimizado para telas OLED, economizando bateria e com visual sofisticado.
+- **Material 3:** Componentes modernos, animações fluidas e indicadores de risco por cores.
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Tecnologias Utilizadas
 
-- **Language:** [Kotlin](https://kotlinlang.org/)
-- **Concurrency:** [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) & [Flow](https://kotlinlang.org/docs/flow.html)
+- **Linguagem:** [Kotlin](https://kotlinlang.org/)
+- **Concorrência:** [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) & [Flow](https://kotlinlang.org/docs/flow.html)
 - **UI:** ViewPager2, TabLayout, SwipeRefreshLayout, Material Components
-- **Privileges:** [Shizuku API](https://shizuku.rikka.app/) (Transparent access to the `settings` shell)
-- **Localization:** Supports Portuguese (BR), English, and Spanish.
+- **Privilégios:** [Shizuku API](https://shizuku.rikka.app/) (Acesso transparente ao shell `settings`)
+- **Localização:** Suporte para Português (BR), Inglês e Espanhol.
 
 ---
 
-## 🚀 How to Use
+## 🚀 Como Usar
 
-1. **Install Shizuku:** The engine that allows system modification without root. [Download here](https://shizuku.rikka.app/download/)
-2. **Authorize CrossSset:** Open the app and grant permission through the Shizuku dialog.
-3. **Explore and Optimize:** Search for keys like `animator_duration_scale` and feel the difference in system smoothness.
-4. **Protect your keys:** Enable **Watchdog** in the edit dialog to ensure the system does not revert your changes.
+1. **Instale o Shizuku:** O motor que permite modificar o sistema sem Root. [Download aqui](https://shizuku.rikka.app/download/).
+2. **Autorize o CrossSset:** Abra o app e conceda a permissão solicitada através do diálogo do Shizuku.
+3. **Explore e Otimize:** Busque por chaves como `animator_duration_scale` e sinta a diferença na fluidez do sistema.
+4. **Proteja suas chaves:** Ative o **Watchdog** no diálogo de edição para garantir que o sistema não reverta suas alterações.
 
 ---
 
-## 📄 License
+## 📄 Licença
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+
+---
+ desenvolvido com ❤️ por **Alisu** | A nova geração do gerenciamento de sistema Android.
