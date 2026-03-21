@@ -70,35 +70,42 @@ class SettingsFragment : Fragment() {
         binding.swipeRefresh.setOnRefreshListener {
             loadSettings(force = true)
         }
-    }
 
-    override fun onResume() {
-        super.onResume()
-        if (!hasLoaded) {
-            loadSettings()
-        }
-    }
-
-    fun loadSettings(force: Boolean = false) {
-        if (!isAdded) return
-        if (hasLoaded && !force) return
-        
-        binding.loadingBar.visibility = View.VISIBLE
-        
+        // Start observing settings
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                try {
-                    SettingsRepository.loadSettings(requireContext(), table).collect { settings ->
+                SettingsRepository.getTableFlow(table).collect { settings ->
+                    if (settings.isNotEmpty()) {
                         hasLoaded = true
                         updateUI(settings)
                         binding.loadingBar.visibility = View.GONE
                         binding.swipeRefresh.isRefreshing = false
                     }
-                } catch (e: Exception) {
-                    Toast.makeText(context, getString(R.string.error_loading, table.name), Toast.LENGTH_SHORT).show()
-                    binding.loadingBar.visibility = View.GONE
-                    binding.swipeRefresh.isRefreshing = false
                 }
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadSettings()
+    }
+
+    fun loadSettings(force: Boolean = false) {
+        if (!isAdded) return
+        
+        if (!force && hasLoaded) return
+
+        binding.loadingBar.visibility = View.VISIBLE
+        
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                SettingsRepository.loadSettings(requireContext(), table, force)
+            } catch (e: Exception) {
+                Toast.makeText(context, getString(R.string.error_loading, table.name), Toast.LENGTH_SHORT).show()
+            } finally {
+                binding.loadingBar.visibility = View.GONE
+                binding.swipeRefresh.isRefreshing = false
             }
         }
     }

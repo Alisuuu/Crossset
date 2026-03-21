@@ -49,6 +49,18 @@
 
     <!-- Descriptions -->
     <string name="desc_animator_speed">Controla la velocidad de las animaciones del sistema (0.5 para una sensación más rápida).</string>
+    <string name="desc_window_speed">Controla la velocidad de las transiciones de ventana.</string>
+    <string name="desc_transition_speed">Controla la velocidad de las transiciones entre actividades.</string>
+    <string name="desc_font_scale">Factor de escala de fuente en todo el sistema.</string>
+    <string name="desc_adb_enabled">Activa o desactiva el Android Debug Bridge (ADB).</string>
+    <string name="desc_show_touches">Muestra feedback visual para los toques en la pantalla.</string>
+    <string name="desc_pointer_speed">Ajusta la velocidad del puntero del ratón o trackpad.</string>
+    <string name="desc_stay_on">Evita que la pantalla se apague mientras el dispositivo se está cargando.</string>
+    <string name="desc_screen_brightness">Ajusta el nivel de brillo manual de la pantalla.</string>
+    <string name="desc_screen_timeout">Duración en milisegundos antes de que la pantalla se apague automáticamente.</string>
+    <string name="desc_rotation">Activa o desactiva la rotación automática de la pantalla.</string>
+    <string name="desc_roaming">Permite que el dispositivo se conecte a redes de datos en roaming.</string>
+    <string name="desc_install_non_market">Permite la instalación de aplicaciones de fuentes ajenas a la Play Store.</string>
 
     <!-- Watchdog -->
     <string name="watchdog_lock">Bloquear este valor (Watchdog)</string>
@@ -76,4 +88,13 @@
     <string name="key_hint">Clave (ej: mi_clave)</string>
     <string name="value_hint">Valor</string>
     <string name="select_table">Seleccionar Tabla</string>
+
+    <!-- Legend Dialog -->
+    <string name="legend_dialog_title">Explicación de los Niveles de Riesgo</string>
+    <string name="legend_safe_title">🟢 Seguro</string>
+    <string name="legend_safe_desc">Ajustes visuales (animaciones, fuentes, temas). Riesgo muy bajo de causar problemas.</string>
+    <string name="legend_moderate_title">🟡 Moderado</string>
+    <string name="legend_moderate_desc">Opciones de desarrollador o conectividad (ADB, USB, Roaming). Cambie con precaución.</string>
+    <string name="legend_dangerous_title">🔴 Peligroso</string>
+    <string name="legend_dangerous_desc">Ajustes de seguridad o hardware. Los cambios incorrectos pueden causar inestabilidad en el sistema o pérdida de datos.</string>
 </resources>

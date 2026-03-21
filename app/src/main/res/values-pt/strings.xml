@@ -49,6 +49,18 @@
 
     <!-- Descriptions -->
     <string name="desc_animator_speed">Controla a velocidade das animações do sistema (0.5 para sensação mais rápida).</string>
+    <string name="desc_window_speed">Controla a velocidade das transições de janela.</string>
+    <string name="desc_transition_speed">Controla a velocidade das transições entre atividades.</string>
+    <string name="desc_font_scale">Fator de escala de fonte em todo o sistema.</string>
+    <string name="desc_adb_enabled">Ativa ou desativa o Android Debug Bridge (ADB).</string>
+    <string name="desc_show_touches">Mostra feedback visual para toques na tela.</string>
+    <string name="desc_pointer_speed">Ajusta a velocidade do ponteiro do mouse ou trackpad.</string>
+    <string name="desc_stay_on">Evita que a tela desligue enquanto o dispositivo está carregando.</string>
+    <string name="desc_screen_brightness">Ajusta o nível de brilho manual da tela.</string>
+    <string name="desc_screen_timeout">Duração em milissegundos antes da tela desligar automaticamente.</string>
+    <string name="desc_rotation">Ativa ou desativa a rotação automática da tela.</string>
+    <string name="desc_roaming">Permite que o dispositivo se conecte a redes de dados em roaming.</string>
+    <string name="desc_install_non_market">Permite a instalação de apps de fontes fora da Play Store.</string>
 
     <!-- Watchdog -->
     <string name="watchdog_lock">Travar este valor (Watchdog)</string>
@@ -76,4 +88,13 @@
     <string name="key_hint">Chave (ex: minha_chave)</string>
     <string name="value_hint">Valor</string>
     <string name="select_table">Selecionar Tabela</string>
+
+    <!-- Legend Dialog -->
+    <string name="legend_dialog_title">Níveis de Risco Explicados</string>
+    <string name="legend_safe_title">🟢 Seguro</string>
+    <string name="legend_safe_desc">Ajustes visuais (animações, fontes, temas). Risco muito baixo de causar problemas.</string>
+    <string name="legend_moderate_title">🟡 Moderado</string>
+    <string name="legend_moderate_desc">Opções de desenvolvedor ou conectividade (ADB, USB, Roaming). Altere com cautela.</string>
+    <string name="legend_dangerous_title">🔴 Perigoso</string>
+    <string name="legend_dangerous_desc">Configurações de segurança ou hardware. Alterações incorretas podem causar instabilidade no sistema ou perda de dados.</string>
 </resources>

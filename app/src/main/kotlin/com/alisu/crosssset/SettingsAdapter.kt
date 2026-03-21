@@ -28,22 +28,17 @@ class SettingsAdapter(private val onItemClick: (SettingsItem) -> Unit) :
             binding.settingValue.text = item.value
             
             val context = binding.root.context
-            val color = when (item.riskLevel) {
-                RiskLevel.SAFE -> context.getColor(R.color.risk_safe)
-                RiskLevel.MODERATE -> context.getColor(R.color.risk_moderate)
-                RiskLevel.DANGEROUS -> context.getColor(R.color.risk_dangerous)
-            }
             
             // Apply color to the indicator dot
-            binding.riskIndicator.backgroundTintList = android.content.res.ColorStateList.valueOf(color)
-            
-            if (item.description != null) {
-                binding.settingDescription.text = item.description
-                binding.settingDescription.visibility = View.VISIBLE
-            } else {
-                binding.settingDescription.text = context.getString(R.string.no_description)
-                binding.settingDescription.visibility = View.VISIBLE
+            val colorRes = when (item.riskLevel) {
+                RiskLevel.SAFE -> R.color.risk_safe
+                RiskLevel.MODERATE -> R.color.risk_moderate
+                RiskLevel.DANGEROUS -> R.color.risk_dangerous
             }
+            binding.riskIndicator.backgroundTintList = android.content.res.ColorStateList.valueOf(context.getColor(colorRes))
+            
+            binding.settingDescription.text = item.description
+            binding.settingDescription.visibility = View.VISIBLE
 
             binding.root.setOnClickListener { onItemClick(item) }
         }

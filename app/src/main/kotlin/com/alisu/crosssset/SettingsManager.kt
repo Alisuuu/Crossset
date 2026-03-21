@@ -40,6 +40,7 @@ object SettingsManager {
     suspend fun getSettings(context: Context, table: SettingsTable): List<SettingsItem> = withContext(Dispatchers.IO) {
         val result = mutableListOf<SettingsItem>()
         val tableName = table.name.lowercase()
+        val noDescription = context.getString(R.string.no_description)
         
         try {
             withTimeout(5000) {
@@ -51,7 +52,8 @@ object SettingsManager {
                         if (parts.size == 2) {
                             val key = parts[0]
                             val value = parts[1]
-                            result.add(SettingsItem(key, value, table, getFriendlyDescription(context, key), getRiskLevel(key)))
+                            val description = getFriendlyDescription(context, key) ?: noDescription
+                            result.add(SettingsItem(key, value, table, description, getRiskLevel(key)))
                         }
                     }
                 }
@@ -83,16 +85,33 @@ object SettingsManager {
     private fun getFriendlyDescription(context: Context, key: String): String? {
         return when (key) {
             "animator_duration_scale" -> context.getString(R.string.desc_animator_speed)
+            "window_animation_scale" -> context.getString(R.string.desc_window_speed)
+            "transition_animation_scale" -> context.getString(R.string.desc_transition_speed)
+            "font_scale" -> context.getString(R.string.desc_font_scale)
+            "adb_enabled" -> context.getString(R.string.desc_adb_enabled)
+            "show_touches" -> context.getString(R.string.desc_show_touches)
+            "pointer_speed" -> context.getString(R.string.desc_pointer_speed)
+            "stay_on_while_plugged_in" -> context.getString(R.string.desc_stay_on)
+            "screen_brightness" -> context.getString(R.string.desc_screen_brightness)
+            "screen_off_timeout" -> context.getString(R.string.desc_screen_timeout)
+            "accelerometer_rotation" -> context.getString(R.string.desc_rotation)
+            "data_roaming" -> context.getString(R.string.desc_roaming)
+            "install_non_market_apps" -> context.getString(R.string.desc_install_non_market)
             else -> null
         }
     }
 
+    private val dangerousKeywords = setOf("password", "lock", "pin", "encryption", "policy", "fingerprint", "provisioning", "credential", "auth")
+    private val moderateKeywords = setOf("adb", "usb", "roaming", "development", "wifi_sleep", "bluetooth", "install_non_market", "tethering", "data_enabled")
+    private val safeKeywords = setOf("animation", "scale", "touch", "sound", "volume", "brightness", "font", "mode", "vibrate", "timeout", "rotation")
+
     private fun getRiskLevel(key: String): RiskLevel {
-        return when {
-            key.contains("animation") || key == "show_touches" -> RiskLevel.SAFE
-            key == "adb_enabled" || key == "usb_mass_storage_enabled" -> RiskLevel.MODERATE
-            key.contains("secure") || key.contains("password") || key.contains("lock") -> RiskLevel.DANGEROUS
-            else -> RiskLevel.SAFE
-        }
+        val k = key.lowercase()
+        
+        if (dangerousKeywords.any { k.contains(it) }) return RiskLevel.DANGEROUS
+        if (moderateKeywords.any { k.contains(it) }) return RiskLevel.MODERATE
+        if (safeKeywords.any { k.contains(it) }) return RiskLevel.SAFE
+        
+        return RiskLevel.SAFE
     }
 }

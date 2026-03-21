@@ -49,6 +49,18 @@
 
     <!-- Descriptions (Example) -->
     <string name="desc_animator_speed">Controls the speed of system animations (0.5 for faster feel).</string>
+    <string name="desc_window_speed">Controls the speed of window transitions.</string>
+    <string name="desc_transition_speed">Controls the speed of activity transitions.</string>
+    <string name="desc_font_scale">System-wide font scaling factor.</string>
+    <string name="desc_adb_enabled">Enables or disables Android Debug Bridge (ADB).</string>
+    <string name="desc_show_touches">Shows visual feedback for touches on the screen.</string>
+    <string name="desc_pointer_speed">Adjusts the speed of the mouse or trackpad pointer.</string>
+    <string name="desc_stay_on">Prevents the screen from turning off while the device is charging.</string>
+    <string name="desc_screen_brightness">Adjusts the manual screen brightness level.</string>
+    <string name="desc_screen_timeout">Duration in milliseconds before the screen turns off automatically.</string>
+    <string name="desc_rotation">Enables or disables automatic screen rotation.</string>
+    <string name="desc_roaming">Allows the device to connect to data networks while roaming.</string>
+    <string name="desc_install_non_market">Allows installation of apps from sources other than the Play Store.</string>
     
     <!-- Watchdog -->
     <string name="watchdog_lock">Lock this value (Watchdog)</string>
@@ -76,4 +88,13 @@
     <string name="key_hint">Key (e.g., custom_key)</string>
     <string name="value_hint">Value</string>
     <string name="select_table">Select Table</string>
+
+    <!-- Legend Dialog -->
+    <string name="legend_dialog_title">Risk Levels Explained</string>
+    <string name="legend_safe_title">🟢 Safe</string>
+    <string name="legend_safe_desc">Visual tweaks (animations, fonts, themes). Very low risk of causing issues.</string>
+    <string name="legend_moderate_title">🟡 Moderate</string>
+    <string name="legend_moderate_desc">Developer or connectivity settings (ADB, USB, Roaming). Change with caution.</string>
+    <string name="legend_dangerous_title">🔴 Dangerous</string>
+    <string name="legend_dangerous_desc">Core security or hardware settings. Incorrect changes can cause system instability, app crashes, or data loss.</string>
 </resources>

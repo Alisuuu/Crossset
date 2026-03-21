@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -75,11 +76,25 @@ class MainActivity : AppCompatActivity() {
         Shizuku.addBinderDeadListener(onBinderDeadListener)
         Shizuku.addRequestPermissionResultListener(onPermissionResultListener)
 
-        binding.fabAdd.setOnClickListener {
-            showAddSettingDialog()
-        }
+        binding.fabAdd.setOnClickListener { showAddSettingDialog() }
+        binding.btnLegend.setOnClickListener { showLegendDialog() }
 
         checkShizukuPermission()
+    }
+
+    private fun showLegendDialog() {
+        val message = "<b>${getString(R.string.legend_safe_title)}</b><br>" +
+                      "${getString(R.string.legend_safe_desc)}<br><br>" +
+                      "<b>${getString(R.string.legend_moderate_title)}</b><br>" +
+                      "${getString(R.string.legend_moderate_desc)}<br><br>" +
+                      "<b>${getString(R.string.legend_dangerous_title)}</b><br>" +
+                      "${getString(R.string.legend_dangerous_desc)}"
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.legend_dialog_title)
+            .setMessage(android.text.Html.fromHtml(message, android.text.Html.FROM_HTML_MODE_LEGACY))
+            .setPositiveButton(R.string.close, null)
+            .show()
     }
 
     private fun showAddSettingDialog() {
@@ -234,6 +249,14 @@ class MainActivity : AppCompatActivity() {
             setPadding(48, 16, 48, 16)
         }
         
+        val descText = android.widget.TextView(this).apply {
+            text = item.description ?: getString(R.string.no_description)
+            setTextColor(getColor(R.color.text_secondary))
+            setPadding(0, 0, 0, 24)
+            setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, 14f)
+        }
+        container.addView(descText)
+        
         val input = TextInputEditText(this)
         input.setText(item.value)
         val params = android.widget.LinearLayout.LayoutParams(
@@ -251,7 +274,6 @@ class MainActivity : AppCompatActivity() {
         container.addView(watchCheckBox)
         
         builder.setView(container)
-        builder.setMessage(item.description ?: getString(R.string.edit_setting_msg))
         
         builder.setPositiveButton(R.string.save) { _, _ ->
             val newValue = input.text.toString()
