@@ -52,7 +52,8 @@ object SettingsManager {
                         if (parts.size == 2) {
                             val key = parts[0]
                             val value = parts[1]
-                            val description = getFriendlyDescription(context, key) ?: noDescription
+                            val manualDescription = getFriendlyDescription(context, key)
+                            val description = manualDescription ?: noDescription
                             result.add(SettingsItem(key, value, table, description, getRiskLevel(key)))
                         }
                     }
@@ -97,6 +98,22 @@ object SettingsManager {
             "accelerometer_rotation" -> context.getString(R.string.desc_rotation)
             "data_roaming" -> context.getString(R.string.desc_roaming)
             "install_non_market_apps" -> context.getString(R.string.desc_install_non_market)
+            "auto_time" -> context.getString(R.string.desc_auto_time)
+            "auto_time_zone" -> context.getString(R.string.desc_auto_timezone)
+            "vibrate_on_touch" -> context.getString(R.string.desc_vibrate_on_touch)
+            "haptic_feedback_enabled" -> context.getString(R.string.desc_haptic_feedback)
+            "airplane_mode_on" -> context.getString(R.string.desc_airplane_mode)
+            "location_mode" -> context.getString(R.string.desc_location_mode)
+            "low_power_trigger_level" -> context.getString(R.string.desc_low_power_trigger)
+            "zen_mode" -> context.getString(R.string.desc_zen_mode)
+            "development_settings_enabled" -> context.getString(R.string.desc_development_settings)
+            "user_setup_complete" -> context.getString(R.string.desc_user_setup_complete)
+            "bluetooth_on" -> context.getString(R.string.desc_bluetooth_on)
+            "wifi_on" -> context.getString(R.string.desc_wifi_on)
+            "mobile_data" -> context.getString(R.string.desc_data_enabled)
+            "volume_ring" -> context.getString(R.string.desc_volume_ring)
+            "volume_music" -> context.getString(R.string.desc_volume_music)
+            "volume_alarm" -> context.getString(R.string.desc_volume_alarm)
             else -> null
         }
     }

@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.tabs.TabLayoutMediator
 import rikka.shizuku.Shizuku
 import android.content.Intent
+import android.content.Context
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
@@ -199,6 +200,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, HistoryActivity::class.java))
                 true
             }
+            R.id.action_ai_config -> {
+                showAIConfigDialog()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -240,59 +245,267 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    fun showEditDialog(item: SettingsItem) {
+    private fun showAIConfigDialog() {
+        val prefs = getSharedPreferences("ai_prefs", Context.MODE_PRIVATE)
         val builder = MaterialAlertDialogBuilder(this)
-        builder.setTitle(item.key)
-        
+        builder.setTitle(R.string.ai_config)
+
         val container = android.widget.LinearLayout(this).apply {
             orientation = android.widget.LinearLayout.VERTICAL
             setPadding(48, 16, 48, 16)
         }
-        
+
+        val providerGroup = com.google.android.material.chip.ChipGroup(this).apply {
+            isSingleSelection = true
+            isSelectionRequired = true
+            setPadding(0, 0, 0, 16)
+        }
+
+        var selectedProvider = AIService.getSelectedProvider(this)
+        AIService.AIProvider.entries.filter { it != AIService.AIProvider.NONE }.forEach { provider ->
+            val chip = com.google.android.material.chip.Chip(this).apply {
+                text = provider.name
+                isCheckable = true
+                if (provider == selectedProvider) isChecked = true
+                setOnCheckedChangeListener { _, isChecked -> if (isChecked) selectedProvider = provider }
+            }
+            providerGroup.addView(chip)
+        }
+        container.addView(providerGroup)
+
+        val keyLayout = com.google.android.material.textfield.TextInputLayout(this, null, com.google.android.material.R.attr.textInputOutlinedStyle).apply {
+            hint = getString(R.string.ai_key_hint)
+            boxStrokeColor = getColor(R.color.lilac)
+        }
+        val keyInput = TextInputEditText(keyLayout.context).apply {
+            setText(AIService.getApiKey(this@MainActivity))
+        }
+        keyLayout.addView(keyInput)
+        container.addView(keyLayout)
+
+        builder.setView(container)
+        builder.setPositiveButton(R.string.save, null) // Set to null initially to override click
+        builder.setNegativeButton(R.string.cancel, null)
+        val dialog = builder.create()
+        dialog.show()
+
+        dialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+            val apiKey = keyInput.text.toString().trim()
+            if (apiKey.isEmpty()) {
+                keyInput.error = getString(R.string.ai_no_key_error)
+                return@setOnClickListener
+            }
+
+            it.isEnabled = false // Disable save button during test
+            Toast.makeText(this, R.string.ai_testing_key, Toast.LENGTH_SHORT).show()
+
+            lifecycleScope.launch {
+                val isValid = AIService.validateKey(selectedProvider, apiKey)
+                if (isValid) {
+                    prefs.edit().putString("provider", selectedProvider.name)
+                        .putString("api_key", apiKey).apply()
+                    Toast.makeText(this@MainActivity, R.string.ai_key_valid, Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                } else {
+                    it.isEnabled = true
+                    Toast.makeText(this@MainActivity, R.string.ai_key_invalid, Toast.LENGTH_LONG).show()
+                    keyInput.error = getString(R.string.ai_key_invalid)
+                }
+            }
+        }
+    }
+
+    fun showEditDialog(item: SettingsItem) {
+        val dialog = MaterialAlertDialogBuilder(this)
+            .create()
+
+        // Use a custom view for the dialog to apply glass background
+        val container = android.widget.LinearLayout(this).apply {
+            orientation = android.widget.LinearLayout.VERTICAL
+            setPadding(60, 40, 60, 60)
+            background = getDrawable(R.drawable.bg_glass_popup)
+            elevation = 20f
+        }
+
+        // Header: Flag Key + AI Button in a vertical stack to avoid overlap
+        val headerLayout = android.widget.LinearLayout(this).apply {
+            orientation = android.widget.LinearLayout.VERTICAL
+            setPadding(0, 0, 0, 32)
+        }
+
+        val titleText = android.widget.TextView(this).apply {
+            text = item.key
+            setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_TitleLarge)
+            setTextColor(getColor(R.color.white))
+            setTypeface(null, android.graphics.Typeface.BOLD)
+            setPadding(0, 0, 0, 16)
+        }
+        headerLayout.addView(titleText)
+
+        // Manual AI Button (Solid Lilac)
+        val aiButton = com.google.android.material.button.MaterialButton(this).apply {
+            text = getString(R.string.ai_btn_use)
+            setBackgroundColor(getColor(R.color.lilac))
+            setTextColor(getColor(R.color.black))
+            cornerRadius = 30
+            insetTop = 0
+            insetBottom = 0
+            layoutParams = android.widget.LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
+        headerLayout.addView(aiButton)
+        container.addView(headerLayout)
+
+        val noDesc = getString(R.string.no_description)
         val descText = android.widget.TextView(this).apply {
-            text = item.description ?: getString(R.string.no_description)
+            text = item.description ?: noDesc
             setTextColor(getColor(R.color.text_secondary))
-            setPadding(0, 0, 0, 24)
-            setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, 14f)
+            setPadding(0, 0, 0, 40)
+            setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, 15f)
         }
         container.addView(descText)
-        
-        val input = TextInputEditText(this)
-        input.setText(item.value)
-        val params = android.widget.LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-        input.layoutParams = params
-        container.addView(input)
-        
+
+        // AI Logic on Button Click
+        aiButton.setOnClickListener {
+            val provider = AIService.getSelectedProvider(this)
+            val apiKey = AIService.getApiKey(this)
+
+            if (provider == AIService.AIProvider.NONE || apiKey.isNullOrBlank()) {
+                showAIHelpDialog()
+            } else {
+                descText.text = getString(R.string.ai_loading)
+                lifecycleScope.launch {
+                    val aiDesc = AIService.fetchDescription(this@MainActivity, item.table, item.key)
+                    if (aiDesc != null) {
+                        descText.text = aiDesc
+                        DescriptionCacheManager.saveDescription(this@MainActivity, item.key, aiDesc)
+                    } else {
+                        descText.text = noDesc
+                    }
+                }
+            }
+        }
+
+        // Try to load from cache first if no description
+        if (item.description == noDesc || item.description.isNullOrEmpty()) {
+            val cached = DescriptionCacheManager.getCachedDescription(this, item.key)
+            if (cached != null) descText.text = cached
+        }
+
+        val input = TextInputEditText(this).apply {
+            setText(item.value)
+            setTextColor(getColor(R.color.white))
+            backgroundTintList = android.content.res.ColorStateList.valueOf(getColor(R.color.lilac))
+        }
+        val inputLayout = com.google.android.material.textfield.TextInputLayout(this, null, com.google.android.material.R.attr.textInputOutlinedStyle).apply {
+            boxStrokeColor = getColor(R.color.lilac)
+            setHintTextColor(android.content.res.ColorStateList.valueOf(getColor(R.color.lilac)))
+        }
+        inputLayout.addView(input)
+        container.addView(inputLayout)
+
         val watchCheckBox = android.widget.CheckBox(this).apply {
             text = getString(R.string.watchdog_lock)
+            setTextColor(getColor(R.color.white))
             isChecked = WatchdogManager.isWatched(this@MainActivity, item.table, item.key)
-            setPadding(0, 16, 0, 0)
+            setPadding(0, 24, 0, 24)
         }
         container.addView(watchCheckBox)
-        
-        builder.setView(container)
-        
-        builder.setPositiveButton(R.string.save) { _, _ ->
-            val newValue = input.text.toString()
-            val isWatched = watchCheckBox.isChecked
-            
-            if (isWatched) {
-                WatchdogManager.addWatchedSetting(this, WatchedSetting(item.table, item.key, newValue))
-            } else {
-                WatchdogManager.removeWatchedSetting(this, item.table, item.key)
-            }
-            
-            if (newValue != item.value) {
-                updateSetting(item, newValue)
-            } else if (isWatched) {
-                Toast.makeText(this, getString(R.string.watchdog_enabled, item.key), Toast.LENGTH_SHORT).show()
+
+        val btnRow = android.widget.LinearLayout(this).apply {
+            orientation = android.widget.LinearLayout.HORIZONTAL
+            gravity = android.view.Gravity.END
+        }
+
+        val btnCancel = com.google.android.material.button.MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
+            text = getString(R.string.cancel)
+            setTextColor(getColor(R.color.text_secondary))
+            setStrokeColorResource(android.R.color.transparent)
+            setOnClickListener { dialog.dismiss() }
+        }
+
+        val btnSave = com.google.android.material.button.MaterialButton(this).apply {
+            text = getString(R.string.save)
+            setOnClickListener {
+                val newValue = input.text.toString()
+                if (watchCheckBox.isChecked) {
+                    WatchdogManager.addWatchedSetting(this@MainActivity, WatchedSetting(item.table, item.key, newValue))
+                } else {
+                    WatchdogManager.removeWatchedSetting(this@MainActivity, item.table, item.key)
+                }
+                if (newValue != item.value) updateSetting(item, newValue)
+                dialog.dismiss()
             }
         }
-        builder.setNegativeButton(R.string.cancel, null)
-        builder.show()
+
+        btnRow.addView(btnCancel)
+        btnRow.addView(btnSave)
+        container.addView(btnRow)
+
+        dialog.setView(container)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.show()
+    }
+
+    private fun showAIHelpDialog() {
+        val container = android.widget.LinearLayout(this).apply {
+            orientation = android.widget.LinearLayout.VERTICAL
+            setPadding(60, 40, 60, 60)
+            background = getDrawable(R.drawable.bg_glass_popup)
+        }
+
+        val title = android.widget.TextView(this).apply {
+            text = getString(R.string.ai_get_key_title)
+            setTextAppearance(com.google.android.material.R.style.TextAppearance_Material3_TitleLarge)
+            setTextColor(getColor(R.color.white))
+            setPadding(0, 0, 0, 24)
+        }
+        container.addView(title)
+
+        val msg = android.widget.TextView(this).apply {
+            text = getString(R.string.ai_get_key_msg)
+            setTextColor(getColor(R.color.text_secondary))
+            setPadding(0, 0, 0, 40)
+        }
+        container.addView(msg)
+
+        val providers = listOf(
+            getString(R.string.ai_btn_openai) to "https://platform.openai.com/api-keys",
+            getString(R.string.ai_btn_deepseek) to "https://platform.deepseek.com/api_keys",
+            getString(R.string.ai_btn_gemini) to "https://aistudio.google.com/app/apikey"
+        )
+
+        providers.forEach { (name, url) ->
+            val btn = com.google.android.material.button.MaterialButton(this, null, com.google.android.material.R.attr.materialButtonStyle).apply {
+                text = name
+                layoutParams = android.widget.LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                ).apply { setMargins(0, 0, 0, 16) }
+                setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url))
+                    startActivity(intent)
+                }
+            }
+            container.addView(btn)
+        }
+
+        val btnConfig = com.google.android.material.button.MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
+            text = getString(R.string.ai_config)
+            setTextColor(getColor(R.color.lilac))
+            setStrokeColorResource(R.color.lilac)
+            setOnClickListener { 
+                showAIConfigDialog()
+            }
+        }
+        container.addView(btnConfig)
+
+        MaterialAlertDialogBuilder(this)
+            .setView(container)
+            .setBackground(getDrawable(android.R.color.transparent))
+            .show()
     }
 
     private fun updateSetting(item: SettingsItem, newValue: String) {

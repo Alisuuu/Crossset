@@ -17,4 +17,9 @@
     <color name="risk_dangerous">#FF5252</color>
     
     <color name="text_secondary">#9E9E9E</color>
+
+    <!-- Glass & Shadows -->
+    <color name="glass_white">#1AFFFFFF</color>
+    <color name="glass_stroke">#33FFFFFF</color>
+    <color name="glass_shadow">#80000000</color>
 </resources>

@@ -48,19 +48,36 @@
     <string name="restore_error">Error during restore</string>
 
     <!-- Descriptions (Example) -->
-    <string name="desc_animator_speed">Controls the speed of system animations (0.5 for faster feel).</string>
-    <string name="desc_window_speed">Controls the speed of window transitions.</string>
-    <string name="desc_transition_speed">Controls the speed of activity transitions.</string>
-    <string name="desc_font_scale">System-wide font scaling factor.</string>
-    <string name="desc_adb_enabled">Enables or disables Android Debug Bridge (ADB).</string>
-    <string name="desc_show_touches">Shows visual feedback for touches on the screen.</string>
-    <string name="desc_pointer_speed">Adjusts the speed of the mouse or trackpad pointer.</string>
-    <string name="desc_stay_on">Prevents the screen from turning off while the device is charging.</string>
-    <string name="desc_screen_brightness">Adjusts the manual screen brightness level.</string>
-    <string name="desc_screen_timeout">Duration in milliseconds before the screen turns off automatically.</string>
-    <string name="desc_rotation">Enables or disables automatic screen rotation.</string>
-    <string name="desc_roaming">Allows the device to connect to data networks while roaming.</string>
-    <string name="desc_install_non_market">Allows installation of apps from sources other than the Play Store.</string>
+    <string name="desc_animator_speed">Global scale for property-based animations. 0.5 makes them faster, 0.0 disables them.</string>
+    <string name="desc_window_speed">Scale for window transition animations. Affects opening/closing app windows.</string>
+    <string name="desc_transition_speed">Scale for in-app transition animations between different activities.</string>
+    <string name="desc_font_scale">System-wide font scaling factor (1.0 is default, 1.15 is large).</string>
+    <string name="desc_adb_enabled">Enables Android Debug Bridge (ADB) for USB debugging and shell access.</string>
+    <string name="desc_show_touches">Shows a visual white dot feedback at the location of every screen touch.</string>
+    <string name="desc_pointer_speed">Speed of the mouse or trackpad pointer (Range: -7 to +7).</string>
+    <string name="desc_stay_on">Prevents the screen from sleeping while the device is plugged into a power source.</string>
+    <string name="desc_screen_brightness">Adjusts the manual screen brightness level (0-255).</string>
+    <string name="desc_screen_timeout">Duration in milliseconds before the screen turns off due to inactivity.</string>
+    <string name="desc_rotation">Master switch for automatic screen rotation based on the accelerometer.</string>
+    <string name="desc_roaming">Allows the device to connect to data networks while roaming on other carriers.</string>
+    <string name="desc_install_non_market">Legacy setting to allow app installation from sources outside the Play Store.</string>
+    <string name="desc_auto_time">Synchronizes system time automatically using network (NTP) servers.</string>
+    <string name="desc_auto_timezone">Automatically sets the device timezone based on network location.</string>
+    <string name="desc_vibrate_on_touch">Provides haptic feedback (vibration) when interacting with the UI.</string>
+    <string name="desc_haptic_feedback">Master switch for system-wide haptic feedback effects.</string>
+    <string name="desc_airplane_mode">Disables all wireless radios (Cellular, WiFi, Bluetooth).</string>
+    <string name="desc_location_mode">Defines accuracy for location services (0:Off, 3:High Accuracy).</string>
+    <string name="desc_low_power_trigger">Battery percentage (0-100) that triggers Battery Saver mode automatically.</string>
+    <string name="desc_zen_mode">Current Do Not Disturb (DND) status (0:Off, 1:On, 2:Alarms only).</string>
+    <string name="desc_development_settings">Enables the \"Developer Options\" menu in the system settings.</string>
+    <string name="desc_user_setup_complete">Flag indicating if the device\'s initial setup wizard was finished.</string>
+    <string name="desc_bluetooth_on">Main radio state for Bluetooth connectivity.</string>
+    <string name="desc_wifi_on">Main radio state for WiFi connectivity.</string>
+    <string name="desc_data_enabled">Master switch for mobile data connectivity.</string>
+    <string name="desc_accelerometer_rotation">Enables or disables rotation based on the physical position of the device.</string>
+    <string name="desc_volume_ring">System-wide volume level for the phone ringtone.</string>
+    <string name="desc_volume_music">System-wide volume level for media and music playback.</string>
+    <string name="desc_volume_alarm">System-wide volume level for alarms.</string>
     
     <!-- Watchdog -->
     <string name="watchdog_lock">Lock this value (Watchdog)</string>
@@ -85,6 +102,20 @@
 
     <!-- Add Setting -->
     <string name="add_setting">Add Setting</string>
+    <string name="ai_config">Configurar IA</string>
+    <string name="ai_provider">Provedor de IA</string>
+    <string name="ai_key_hint">Sua Chave de API</string>
+    <string name="ai_loading">Buscando explicação exata via IA...</string>
+    <string name="ai_get_key_title">Configure sua IA</string>
+    <string name="ai_get_key_msg">Você precisa de uma chave de API para usar a explicação inteligente. Escolha um provedor:</string>
+    <string name="ai_btn_openai">ChatGPT (OpenAI)</string>
+    <string name="ai_btn_deepseek">DeepSeek AI</string>
+    <string name="ai_btn_gemini">Google Gemini</string>
+    <string name="ai_btn_use">IA</string>
+    <string name="ai_no_key_error">Chave de API não configurada!</string>
+    <string name="ai_key_valid">Chave validada com sucesso!</string>
+    <string name="ai_key_invalid">Falha ao validar: Verifique sua chave e internet.</string>
+    <string name="ai_testing_key">Testando chave...</string>
     <string name="key_hint">Key (e.g., custom_key)</string>
     <string name="value_hint">Value</string>
     <string name="select_table">Select Table</string>

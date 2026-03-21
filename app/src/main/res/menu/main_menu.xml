@@ -13,4 +13,8 @@
         android:id="@+id/action_history"
         android:title="@string/title_history"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_ai_config"
+        android:title="@string/ai_config"
+        app:showAsAction="never" />
 </menu>
