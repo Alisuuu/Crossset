@@ -22,7 +22,6 @@
 | **Linguagem** | Java (Legacy) | **Kotlin (Moderno)** |
 | **Interface** | Android 4.0 Style | **Material 3 / Amoled** |
 | **Performance** | Lento em listas longas | **Lazy Loading (Instantâneo)** |
-| **Permissões** | ADB Manual (cada tabela) | **Shizuku (Um toque)** |
 | **Proteção** | Nenhuma | **Watchdog (Bloqueio Real-time)** |
 | **Busca** | Básica | **Instantânea com Cache** |
 | **Estabilidade** | Sofre com ANRs | **Zero ANR (Multi-threaded)** |
