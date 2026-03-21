@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">CrossSset</string>
+    <string name="search_hint">Buscar ajustes...</string>
+    
+    <!-- Shizuku -->
+    <string name="title_shizuku">Estado de Shizuku</string>
+    <string name="shizuku_active">Shizuku: Activo</string>
+    <string name="shizuku_not_available">Shizuku: No disponible</string>
+    <string name="shizuku_permission_granted">Permiso de Shizuku concedido</string>
+    <string name="shizuku_permission_denied">Permiso de Shizuku denegado</string>
+    <string name="shizuku_permission_not_granted">Permiso no concedido</string>
+    <string name="shizuku_dialog_title">Permiso de Shizuku</string>
+    <string name="shizuku_dialog_msg">Esta aplicación requiere el permiso de Shizuku para gestionar los ajustes del sistema.</string>
+    <string name="request_permission">Solicitar</string>
+    
+    <!-- General Actions -->
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="close">Cerrar</string>
+    <string name="undo">Deshacer</string>
+    
+    <!-- Settings Explorer -->
+    <string name="title_settings_list">Explorador</string>
+    <string name="edit_setting_title">Editar Ajuste</string>
+    <string name="edit_setting_msg">Editar valor del ajuste</string>
+    <string name="no_description">No hay descripción disponible</string>
+    <string name="error_loading">Error al cargar %1$s</string>
+    <string name="setting_updated">Ajuste actualizado</string>
+    <string name="setting_update_failed">Error ao actualizar ajuste</string>
+    
+    <!-- History -->
+    <string name="title_history">Cambios Recientes</string>
+    <string name="clear_history">Limpiar Historial</string>
+    <string name="revert_success">¡Revertido con éxito!</string>
+    <string name="revert_error">Error al revertir</string>
+    <string name="history_from">De</string>
+    <string name="history_to">Para</string>
+    
+    <!-- Backup & Restore -->
+    <string name="backup_saved">¡Copia de seguridad guardada!</string>
+    <string name="backup_failed">Error al crear la copia de seguridad</string>
+    <string name="backup_error">Error durante la copia de seguridad</string>
+    <string name="restore_warning_title">⚠️ ADVERTENCIA CRÍTICA</string>
+    <string name="restore_warning_msg">Restaurar una copia de seguridad sobrescribirá muchos ajustes del sistema. ¿Desea continuar?</string>
+    <string name="restore_action">RESTAURAR</string>
+    <string name="restore_complete">¡Restauración completada!</string>
+    <string name="restore_failed">Error al restaurar la copia de seguridad</string>
+    <string name="restore_error">Error durante la restauración</string>
+
+    <!-- Descriptions -->
+    <string name="desc_animator_speed">Controla la velocidad de las animaciones del sistema (0.5 para una sensación más rápida).</string>
+
+    <!-- Watchdog -->
+    <string name="watchdog_lock">Bloquear este valor (Watchdog)</string>
+    <string name="watchdog_enabled">Watchdog activado para %1$s</string>
+    <string name="watchdog_notification_title">Watchdog de CrossSset</string>
+    <string name="watchdog_notification_desc">Protegiendo tus ajustes en tiempo real...</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_title">Bienvenido a\nCrossSset</string>
+    <string name="welcome_desc">El explorador definitivo de ajustes. Para comenzar, necesitamos algunos permisos para controlar y proteger tu dispositivo.</string>
+    <string name="step_shizuku_title">API de Shizuku</string>
+    <string name="step_shizuku_desc">Permite modificar ajustes del sistema sin root.</string>
+    <string name="step_notifications_title">Notificaciones</string>
+    <string name="step_notifications_desc">Necesario para la protección en tiempo real de Watchdog.</string>
+    <string name="btn_continue">Empezar</string>
+    <string name="status_granted">Concedido</string>
+
+    <!-- Legend -->
+    <string name="legend_safe">Seguro</string>
+    <string name="legend_moderate">Moderado</string>
+    <string name="legend_dangerous">Peligroso</string>
+
+    <!-- Add Setting -->
+    <string name="add_setting">Añadir Ajuste</string>
+    <string name="key_hint">Clave (ej: mi_clave)</string>
+    <string name="value_hint">Valor</string>
+    <string name="select_table">Seleccionar Tabla</string>
+</resources>

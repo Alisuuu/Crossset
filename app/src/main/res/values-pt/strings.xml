@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">CrossSset</string>
+    <string name="search_hint">Pesquisar configurações...</string>
+    
+    <!-- Shizuku -->
+    <string name="title_shizuku">Status do Shizuku</string>
+    <string name="shizuku_active">Shizuku: Ativo</string>
+    <string name="shizuku_not_available">Shizuku: Não Disponível</string>
+    <string name="shizuku_permission_granted">Permissão do Shizuku concedida</string>
+    <string name="shizuku_permission_denied">Permissão do Shizuku negada</string>
+    <string name="shizuku_permission_not_granted">Permissão não concedida</string>
+    <string name="shizuku_dialog_title">Permissão do Shizuku</string>
+    <string name="shizuku_dialog_msg">Este aplicativo requer permissão do Shizuku para gerenciar as configurações do sistema.</string>
+    <string name="request_permission">Solicitar</string>
+    
+    <!-- General Actions -->
+    <string name="save">Salvar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="close">Fechar</string>
+    <string name="undo">Desfazer</string>
+    
+    <!-- Settings Explorer -->
+    <string name="title_settings_list">Explorador</string>
+    <string name="edit_setting_title">Editar Configuração</string>
+    <string name="edit_setting_msg">Editar valor da configuração</string>
+    <string name="no_description">Nenhuma descrição disponível</string>
+    <string name="error_loading">Erro ao carregar %1$s</string>
+    <string name="setting_updated">Configuração atualizada</string>
+    <string name="setting_update_failed">Falha ao atualizar configuração</string>
+    
+    <!-- History -->
+    <string name="title_history">Alterações Recentes</string>
+    <string name="clear_history">Limpar Histórico</string>
+    <string name="revert_success">Revertido com sucesso!</string>
+    <string name="revert_error">Erro ao reverter</string>
+    <string name="history_from">De</string>
+    <string name="history_to">Para</string>
+    
+    <!-- Backup & Restore -->
+    <string name="backup_saved">Backup salvo!</string>
+    <string name="backup_failed">Falha ao criar backup</string>
+    <string name="backup_error">Erro durante o backup</string>
+    <string name="restore_warning_title">⚠️ AVISO CRÍTICO</string>
+    <string name="restore_warning_msg">Restaurar um backup substituirá muitas configurações do sistema. Deseja prosseguir?</string>
+    <string name="restore_action">RESTAURAR</string>
+    <string name="restore_complete">Restauração concluída!</string>
+    <string name="restore_failed">Falha ao restaurar backup</string>
+    <string name="restore_error">Erro durante a restauração</string>
+
+    <!-- Descriptions -->
+    <string name="desc_animator_speed">Controla a velocidade das animações do sistema (0.5 para sensação mais rápida).</string>
+
+    <!-- Watchdog -->
+    <string name="watchdog_lock">Travar este valor (Watchdog)</string>
+    <string name="watchdog_enabled">Watchdog ativado para %1$s</string>
+    <string name="watchdog_notification_title">Watchdog do CrossSset</string>
+    <string name="watchdog_notification_desc">Protegendo suas configurações em tempo real...</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_title">Bem-vindo ao\nCrossSset</string>
+    <string name="welcome_desc">O explorador definitivo de configurações. Para começar, precisamos de algumas permissões para controlar e proteger seu dispositivo.</string>
+    <string name="step_shizuku_title">API do Shizuku</string>
+    <string name="step_shizuku_desc">Permite modificar configurações do sistema sem root.</string>
+    <string name="step_notifications_title">Notificações</string>
+    <string name="step_notifications_desc">Necessário para a proteção em tempo real do Watchdog.</string>
+    <string name="btn_continue">Começar</string>
+    <string name="status_granted">Concedido</string>
+
+    <!-- Legend -->
+    <string name="legend_safe">Seguro</string>
+    <string name="legend_moderate">Moderado</string>
+    <string name="legend_dangerous">Perigoso</string>
+
+    <!-- Add Setting -->
+    <string name="add_setting">Adicionar Configuração</string>
+    <string name="key_hint">Chave (ex: minha_chave)</string>
+    <string name="value_hint">Valor</string>
+    <string name="select_table">Selecionar Tabela</string>
+</resources>

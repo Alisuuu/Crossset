@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Palette Premium Amoled -->
+    <color name="amoled_black">#000000</color>
+    <color name="surface_dark">#0A0A0A</color>
+    <color name="surface_variant">#121212</color>
+    
+    <color name="lilac">#D18CFF</color>
+    <color name="lilac_dark">#9D50BB</color>
+    <color name="lilac_bright">#E0B0FF</color>
+    
+    <color name="risk_safe">#00E676</color>
+    <color name="risk_moderate">#FFD600</color>
+    <color name="risk_dangerous">#FF5252</color>
+    
+    <color name="text_secondary">#9E9E9E</color>
+</resources>

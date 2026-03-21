@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CrossSset" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/lilac</item>
+        <item name="colorOnPrimary">@color/amoled_black</item>
+        <item name="colorSecondary">@color/lilac_dark</item>
+        <item name="android:windowBackground">@color/amoled_black</item>
+        <item name="android:statusBarColor">@color/amoled_black</item>
+        <item name="android:navigationBarColor">@color/amoled_black</item>
+        <item name="colorSurface">@color/amoled_black</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Premium.Title</item>
+    </style>
+
+    <style name="Theme.CrossSset" parent="Base.Theme.CrossSset" />
+
+    <style name="TextAppearance.Premium.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+</resources>

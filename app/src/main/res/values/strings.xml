@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">CrossSset</string>
+    <string name="search_hint">Search settings...</string>
+    
+    <!-- Shizuku -->
+    <string name="title_shizuku">Shizuku Status</string>
+    <string name="shizuku_active">Shizuku: Active</string>
+    <string name="shizuku_not_available">Shizuku: Not Available</string>
+    <string name="shizuku_permission_granted">Shizuku permission granted</string>
+    <string name="shizuku_permission_denied">Shizuku permission denied</string>
+    <string name="shizuku_permission_not_granted">Permission not granted</string>
+    <string name="shizuku_dialog_title">Shizuku Permission</string>
+    <string name="shizuku_dialog_msg">This app requires Shizuku permission to manage system settings.</string>
+    <string name="request_permission">Request</string>
+    
+    <!-- General Actions -->
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="undo">Undo</string>
+    
+    <!-- Settings Explorer -->
+    <string name="title_settings_list">Explorer</string>
+    <string name="edit_setting_title">Edit Setting</string>
+    <string name="edit_setting_msg">Edit setting value</string>
+    <string name="no_description">No description available</string>
+    <string name="error_loading">Error loading %1$s</string>
+    <string name="setting_updated">Setting updated</string>
+    <string name="setting_update_failed">Failed to update setting</string>
+    
+    <!-- History -->
+    <string name="title_history">Recent Changes</string>
+    <string name="clear_history">Clear History</string>
+    <string name="revert_success">Reverted successfully!</string>
+    <string name="revert_error">Error during revert</string>
+    <string name="history_from">From</string>
+    <string name="history_to">To</string>
+    
+    <!-- Backup & Restore -->
+    <string name="backup_saved">Backup saved!</string>
+    <string name="backup_failed">Failed to create backup</string>
+    <string name="backup_error">Error during backup</string>
+    <string name="restore_warning_title">⚠️ CRITICAL WARNING</string>
+    <string name="restore_warning_msg">Restoring a backup will overwrite many system settings. Do you want to proceed?</string>
+    <string name="restore_action">RESTORE</string>
+    <string name="restore_complete">Restore complete!</string>
+    <string name="restore_failed">Failed to restore backup</string>
+    <string name="restore_error">Error during restore</string>
+
+    <!-- Descriptions (Example) -->
+    <string name="desc_animator_speed">Controls the speed of system animations (0.5 for faster feel).</string>
+    
+    <!-- Watchdog -->
+    <string name="watchdog_lock">Lock this value (Watchdog)</string>
+    <string name="watchdog_enabled">Watchdog enabled for %1$s</string>
+    <string name="watchdog_notification_title">CrossSset Watchdog</string>
+    <string name="watchdog_notification_desc">Protecting your settings in real-time...</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_title">Welcome to\nCrossSset</string>
+    <string name="welcome_desc">The ultimate system settings manager. To get started, we need a few permissions to control and protect your device.</string>
+    <string name="step_shizuku_title">Shizuku API</string>
+    <string name="step_shizuku_desc">Allows modifying system settings without root.</string>
+    <string name="step_notifications_title">Notifications</string>
+    <string name="step_notifications_desc">Required for the Watchdog real-time protection.</string>
+    <string name="btn_continue">Get Started</string>
+    <string name="status_granted">Granted</string>
+
+    <!-- Legend -->
+    <string name="legend_safe">Safe</string>
+    <string name="legend_moderate">Moderate</string>
+    <string name="legend_dangerous">Dangerous</string>
+
+    <!-- Add Setting -->
+    <string name="add_setting">Add Setting</string>
+    <string name="key_hint">Key (e.g., custom_key)</string>
+    <string name="value_hint">Value</string>
+    <string name="select_table">Select Table</string>
+</resources>

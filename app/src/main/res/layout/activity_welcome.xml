@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/amoled_black"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:tint="@color/lilac" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="@string/welcome_title"
+        android:textAppearance="?attr/textAppearanceHeadlineLarge"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/welcome_desc"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="@color/text_secondary" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Step: Shizuku -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardShizuku"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/surface_variant"
+        app:cardCornerRadius="16dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#1FFFFFFF">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="16dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iconShizuku"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_dialog_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="@color/lilac" />
+
+            <TextView
+                android:id="@+id/titleShizuku"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/step_shizuku_title"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/statusShizuku"
+                app:layout_constraintStart_toEndOf="@id/iconShizuku"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/step_shizuku_desc"
+                android:textAppearance="?attr/textAppearanceLabelSmall"
+                android:textColor="@color/text_secondary"
+                app:layout_constraintEnd_toEndOf="@id/titleShizuku"
+                app:layout_constraintStart_toStartOf="@id/titleShizuku"
+                app:layout_constraintTop_toBottomOf="@id/titleShizuku" />
+
+            <TextView
+                android:id="@+id/statusShizuku"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PENDING"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
+                android:textColor="@color/risk_dangerous"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Step: Notifications -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/surface_variant"
+        app:cardCornerRadius="16dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#1FFFFFFF">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="16dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iconNotifications"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_popup_reminder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="@color/lilac" />
+
+            <TextView
+                android:id="@+id/titleNotifications"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/step_notifications_title"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/statusNotifications"
+                app:layout_constraintStart_toEndOf="@id/iconNotifications"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/step_notifications_desc"
+                android:textAppearance="?attr/textAppearanceLabelSmall"
+                android:textColor="@color/text_secondary"
+                app:layout_constraintEnd_toEndOf="@id/titleNotifications"
+                app:layout_constraintStart_toStartOf="@id/titleNotifications"
+                app:layout_constraintTop_toBottomOf="@id/titleNotifications" />
+
+            <TextView
+                android:id="@+id/statusNotifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PENDING"
+                android:textAppearance="?attr/textAppearanceLabelLarge"
+                android:textColor="@color/risk_dangerous"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStart"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="@string/btn_continue"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textColor="@color/lilac"
+        app:cardBackgroundColor="#20D18CFF"
+        app:cornerRadius="32dp" />
+
+</LinearLayout>
