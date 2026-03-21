@@ -2,6 +2,8 @@
 <p align="center">
 <img width="1296" height="2445" alt="1001917525" src="https://github.com/user-attachments/assets/558cac8d-5670-40ee-85d3-4e48661cfd82" />
 <img width="1376" height="2555" alt="1001917524" src="https://github.com/user-attachments/assets/0a94299a-d8d4-4299-a9fc-1d3317a2f9d5" />
+</p>
+
 <p align="center">
 **CrossSset** é a alternativa moderna, poderosa e elegante ao famoso *SetEdit*. Escrito do zero em **Kotlin**, ele é um explorador e gerenciador avançado de configurações do Android (System, Secure e Global), focado em performance extrema e integração nativa com o **Shizuku**.
 
