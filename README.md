@@ -44,7 +44,6 @@
 - **Backup & Restore:** Exporte suas otimizações em arquivos ZIP e restaure em qualquer dispositivo.
 
 ### 🎨 Design
-- **Amoled Deep Black:** 
 - **Material 3:** Componentes modernos, animações fluidas e indicadores de risco por cores.
 
 ---
