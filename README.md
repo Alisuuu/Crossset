@@ -62,7 +62,3 @@
 4. **Protect your keys:** Enable **Watchdog** in the edit dialog to ensure the system does not revert your changes.
 
 ---
-
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
