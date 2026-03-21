@@ -74,4 +74,3 @@
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 ---
- desenvolvido com ❤️ por **Alisu** | A nova geração do gerenciamento de sistema Android.
