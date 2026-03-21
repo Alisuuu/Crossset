@@ -30,11 +30,6 @@
 
 ## ✨ Recursos Principais
 
-### 🚀 Performance Nível Profissional
-- **Arquitetura Assíncrona:** Uso intensivo de Kotlin Coroutines e Flows. Nenhuma operação pesada ocorre na thread de interface.
-- **Carregamento sob Demanda (Lazy Loading):** Gerencie milhares de chaves sem lag ou travamentos.
-- **Cache Inteligente:** Resultados de busca instantâneos utilizando cache em memória.
-
 ### 🛡️ Watchdog (O Guardião)
 - O recurso que faltava no SetEdit: monitore configurações específicas e, se o sistema ou outro app tentar alterá-las, o Watchdog as força de volta ao seu valor customizado imediatamente.
 
