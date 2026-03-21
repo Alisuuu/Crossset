@@ -43,8 +43,8 @@
 - **Histórico & Undo:** Registro de todas as alterações com opção de reversão rápida (Undo).
 - **Backup & Restore:** Exporte suas otimizações em arquivos ZIP e restaure em qualquer dispositivo.
 
-### 🎨 Design Premium
-- **Amoled Deep Black:** Totalmente otimizado para telas OLED, economizando bateria e com visual sofisticado.
+### 🎨 Design
+- **Amoled Deep Black:** 
 - **Material 3:** Componentes modernos, animações fluidas e indicadores de risco por cores.
 
 ---
