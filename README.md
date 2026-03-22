@@ -3,8 +3,8 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/558cac8d-5670-40ee-85d3-4e48661cfd82" width="45%" />
   <img src="https://github.com/user-attachments/assets/0a94299a-d8d4-4299-a9fc-1d3317a2f9d5" width="45%" />
-  <img width="1350" height="2524" alt="1001918007" src="https://github.com/user-attachments/assets/fc216a10-e709-4b23-8e55-e48c482c0541" width="45%" />
-<img width="1322" height="2495" alt="1001918009" src="https://github.com/user-attachments/assets/3844e15c-d894-41f1-84ad-c36249ae550d" width="45%" />
+  <img src="https://github.com/user-attachments/assets/fc216a10-e709-4b23-8e55-e48c482c0541" width="45%" />
+<img src="https://github.com/user-attachments/assets/3844e15c-d894-41f1-84ad-c36249ae550d" width="45%" />
 
 </p>
 
